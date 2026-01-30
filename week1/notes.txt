@@ -1,1 +1,2 @@
 Ive learnt how to connect RStudio to git on macOS
+Remember to leave a good commit note every time i commit to keep a good record.
