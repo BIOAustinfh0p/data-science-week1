@@ -38,3 +38,21 @@ mosquito_egg_raw |>
 #   
 # - Any obvious problems?
 # consistency of naming
+
+library(janitor)
+mosquito_egg_raw |>
+  get_dupes()
+library(dplyr)
+class(df)
+mosquito_egg_raw_impossible <- mosquito_egg_raw |>
+  mutate(
+    body_mass_mg = if_else(body_mass_mg <0, TRUE,FALSE))
+head(mosquito_egg_raw_impossible) # impossible values <0 are marked as NA as do not want to make assumptions on validity of results
+
+body_mass_improbable <- mosquito_egg_raw |>
+  mutate(
+    body_mass_mg = if_else(body_mass_mg <0, NA_real_, body_mass_mg)
+  ) # marking impossible values as NA 
+
+body_mass_improbable |>
+  filter(body_mass_mg <= 0) # checking if the removal of impossible values worked
